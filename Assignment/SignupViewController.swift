@@ -70,9 +70,21 @@ class SignupViewController: UIViewController {
     
 
     @IBAction func signupBtnClicked(_ sender: Any) {
+        if( Validation.validate(text: first_name.text ?? "" ) == true && Validation.validate(text: last_name.text ?? ""  ) == true && Validation.validateEmail(enteredEmail: email.text ?? "") ==  true && Validation.validate(text: address.text ?? "" ) == true && phone.text?.count == 11 && password.text?.count ?? 1 > 5 && password.text == confirmPassword.text)
+        {
+            //MARK: login code
+            
+            
+        }else{
+            AlartController.showAlart(self, title: "Error !", message: "Signup form isn't filled correctly!")
+        }
+        
         
         
     }
+    
+    
+    
     
    
 }
