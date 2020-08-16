@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		18CEEE9542ED183BD198ED9A /* Pods_Assignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B88894E9463BC2077DD24B3 /* Pods_Assignment.framework */; };
+		7379A85E24E9189B00296108 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7379A85D24E9189B00296108 /* LoginData.swift */; };
+		7379A86024E92CD800296108 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7379A85F24E92CD800296108 /* UserData.swift */; };
 		73C7F30E24E69CBE0095363E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F30D24E69CBE0095363E /* AppDelegate.swift */; };
 		73C7F31024E69CBE0095363E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F30F24E69CBE0095363E /* SceneDelegate.swift */; };
 		73C7F31524E69CBE0095363E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73C7F31324E69CBE0095363E /* Main.storyboard */; };
@@ -20,11 +22,14 @@
 		73C7F32A24E7862C0095363E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F32924E7862C0095363E /* Validation.swift */; };
 		73C7F32C24E791D50095363E /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F32B24E791D50095363E /* RoundButton.swift */; };
 		73C7F33024E90B650095363E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F32F24E90B650095363E /* API.swift */; };
+		73C7F33224E90D200095363E /* CheckNetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F33124E90D200095363E /* CheckNetworkConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3B88894E9463BC2077DD24B3 /* Pods_Assignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Assignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4766DE1005597AFDAA4A3F3F /* Pods-Assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.release.xcconfig"; path = "Target Support Files/Pods-Assignment/Pods-Assignment.release.xcconfig"; sourceTree = "<group>"; };
+		7379A85D24E9189B00296108 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		7379A85F24E92CD800296108 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		73C7F30A24E69CBE0095363E /* Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C7F30D24E69CBE0095363E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73C7F30F24E69CBE0095363E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +44,7 @@
 		73C7F32924E7862C0095363E /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		73C7F32B24E791D50095363E /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		73C7F32F24E90B650095363E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		73C7F33124E90D200095363E /* CheckNetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetworkConnection.swift; sourceTree = "<group>"; };
 		DE6B51BE4DB8BD5BA504471E /* Pods-Assignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.debug.xcconfig"; path = "Target Support Files/Pods-Assignment/Pods-Assignment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7379A85C24E9188A00296108 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7379A85D24E9189B00296108 /* LoginData.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		73C7F30124E69CBE0095363E = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +89,7 @@
 		73C7F30C24E69CBE0095363E /* Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				7379A85C24E9188A00296108 /* Models */,
 				73C7F32E24E90B480095363E /* controllers */,
 				73C7F32D24E90B1B0095363E /* Helper */,
 				73C7F30D24E69CBE0095363E /* AppDelegate.swift */,
@@ -94,6 +109,8 @@
 				73C7F32924E7862C0095363E /* Validation.swift */,
 				73C7F32524E6F5FA0095363E /* AlartController.swift */,
 				73C7F32F24E90B650095363E /* API.swift */,
+				73C7F33124E90D200095363E /* CheckNetworkConnection.swift */,
+				7379A85F24E92CD800296108 /* UserData.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -243,12 +260,15 @@
 				73C7F32C24E791D50095363E /* RoundButton.swift in Sources */,
 				73C7F32624E6F5FA0095363E /* AlartController.swift in Sources */,
 				73C7F32224E6A27B0095363E /* InitialViewController.swift in Sources */,
+				73C7F33224E90D200095363E /* CheckNetworkConnection.swift in Sources */,
 				73C7F30E24E69CBE0095363E /* AppDelegate.swift in Sources */,
 				73C7F32424E6A2A90095363E /* SignupViewController.swift in Sources */,
+				7379A86024E92CD800296108 /* UserData.swift in Sources */,
 				73C7F31024E69CBE0095363E /* SceneDelegate.swift in Sources */,
 				73C7F32824E6F67F0095363E /* HomeViewController.swift in Sources */,
 				73C7F33024E90B650095363E /* API.swift in Sources */,
 				73C7F32A24E7862C0095363E /* Validation.swift in Sources */,
+				7379A85E24E9189B00296108 /* LoginData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
