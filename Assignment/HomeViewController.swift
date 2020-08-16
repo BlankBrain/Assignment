@@ -65,7 +65,6 @@ class HomeViewController: UIViewController, LoginButtonDelegate {
     }
     @IBAction func logoutBtnClicked(_ sender: Any) {
         UserData.loginFromEmail = false
-        UserData.firstLogin = false
         UserData.email = ""
         UserData.name = ""
         self.performSegue(withIdentifier: "logout", sender: self)
