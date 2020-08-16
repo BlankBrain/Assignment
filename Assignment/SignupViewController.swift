@@ -9,8 +9,12 @@
 import UIKit
 import Alamofire  
 
-class SignupViewController: UIViewController ,UITextFieldDelegate  {
-
+class SignupViewController: UIViewController ,UITextFieldDelegate {
+  
+    
+    let decoder = JSONDecoder()
+    var Code = codeModel(success: false)
+    var selectedCode:String = "+880"
     @IBOutlet weak var first_name: UITextField!
     @IBOutlet weak var last_name: UITextField!
     @IBOutlet weak var email: UITextField!
@@ -24,6 +28,10 @@ class SignupViewController: UIViewController ,UITextFieldDelegate  {
     
     override func viewDidLoad() {
           super.viewDidLoad()
+        getCodes()
+        tableview.delegate = self
+        tableview.dataSource = self
+        tableview.register(cell.self, forCellReuseIdentifier: "cell")
 
       }
     
@@ -35,8 +43,7 @@ class SignupViewController: UIViewController ,UITextFieldDelegate  {
           self.phone.delegate = self
           self.address.delegate = self
           self.password.delegate = self
-
-          //12
+        
           
       }
     
@@ -61,12 +68,13 @@ class SignupViewController: UIViewController ,UITextFieldDelegate  {
            transparentView.alpha = 0
            UIView.animate(withDuration: 0.4, delay: 0 , options: .curveEaseOut, animations: {
            self.transparentView.alpha = 0.5
-            self.tableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y , width: frames.width, height: 200)
+            self.tableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y + 5 , width: frames.width, height: CGFloat(self.Code.data.count * 30))
            }, completion: nil)
             
        }
        
-       @objc func removeTransparentView(frames: CGRect){
+       @objc func removeTransparentView(){
+        let frames = countryCode.frame
         UIView.animate(withDuration: 0.4, delay: 0 , options: .curveEaseOut, animations: {
         self.transparentView.alpha = 0 }, completion: nil)
         self.tableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y , width: frames.width, height: 0)
@@ -78,14 +86,36 @@ class SignupViewController: UIViewController ,UITextFieldDelegate  {
     
   //MARK: functions
     
+    
+    
     @IBAction func countryCodeSelected(_ sender: Any) {
         addTransparentView(frames: countryCode.frame )
         
     }
     
 
+    //MARK: get country codes
+    func getCodes(){
+        AF.request(API.baseURL + "code/list" , method: .get).responseJSON { response in
+           // print(response)
+             do{ let codes = try self.decoder.decode(codeModel.self , from: response.data! )
+                
+               // print(codes)
+                self.Code = codes
+               //print(self.Code)
+                }catch{
+                print("error parsing json data")  }
+
+              }
+    }
+    
+   
+    
+    
+    
+    
     @IBAction func signupBtnClicked(_ sender: Any) {
-        if( Validation.validate(text: first_name.text ?? "" ) == true && Validation.validate(text: last_name.text ?? ""  ) == true && Validation.validateEmail(enteredEmail: email.text ?? "") ==  true && Validation.validate(text: address.text ?? "" ) == true && phone.text?.count == 11 && password.text?.count ?? 1 > 5 && password.text == confirmPassword.text)
+        if( Validation.validate(text: first_name.text ?? "" ) == true && Validation.validate(text: last_name.text ?? ""  ) == true && Validation.validateEmail(enteredEmail: email.text ?? "") ==  true && Validation.validate(text: address.text ?? "" ) == true && phone.text?.count ?? 1 > 7 && password.text?.count ?? 1 > 5 && password.text == confirmPassword.text)
         {
             UserData.email = self.email.text!
             UserData.name = self.first_name.text!
@@ -125,7 +155,7 @@ class SignupViewController: UIViewController ,UITextFieldDelegate  {
               let textToTranslate1 = self.first_name.text ?? "" //first name
               let textToTranslate2 = self.last_name.text ?? "" //last name
               let textToTranslate3 = self.email.text ?? ""  //email
-              let textToTranslate4 = self.phone.text ?? ""  //phone
+              let textToTranslate4 =  ( (self.selectedCode) + (self.phone.text ?? "" ) )//phone
               let textToTranslate5 = self.address.text ?? "" //address
               let textToTranslate6 = self.password.text ?? ""  //password
 
@@ -149,14 +179,35 @@ class SignupViewController: UIViewController ,UITextFieldDelegate  {
                 self.address.text = ""
                 self.password.text = ""
                 self.confirmPassword.text = ""
-
-
-
-                               
-              
+        
         }//--------------------
               return true
      }//--------- end
     
    
+}
+extension SignupViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.Code.data.count
+      }
+      
+      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath)
+        cell.textLabel?.text = self.Code.data[indexPath.row].code
+        return cell
+      }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.countryCode.setTitle(self.Code.data[indexPath.row].code, for: .normal)
+        self.selectedCode = self.Code.data[indexPath.row].code ?? "+880"
+        //print(self.selectedCode)
+        removeTransparentView()
+    }
+    
+    
+}
+class cell: UITableViewCell {
+    
 }
