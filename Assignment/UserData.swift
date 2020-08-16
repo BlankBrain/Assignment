@@ -11,5 +11,8 @@ struct UserData {
     static var loginFromEmail: Bool = false
     static var name: String = ""
     static var email: String = ""
+    static var firstLogin: Bool = false
+
+    
 
 }

@@ -46,6 +46,8 @@ class HomeViewController: UIViewController, LoginButtonDelegate {
     loginButton.center = view.center
     view.addSubview(loginButton)
     loginButton.delegate = self
+        
+   
     if(UserData.loginFromEmail == true){
         loginButton.isHidden = true
         email.text = UserData.email
@@ -63,6 +65,7 @@ class HomeViewController: UIViewController, LoginButtonDelegate {
     }
     @IBAction func logoutBtnClicked(_ sender: Any) {
         UserData.loginFromEmail = false
+        UserData.firstLogin = false
         UserData.email = ""
         UserData.name = ""
         self.performSegue(withIdentifier: "logout", sender: self)
