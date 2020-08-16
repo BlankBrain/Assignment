@@ -19,6 +19,7 @@
 		73C7F32824E6F67F0095363E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F32724E6F67F0095363E /* HomeViewController.swift */; };
 		73C7F32A24E7862C0095363E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F32924E7862C0095363E /* Validation.swift */; };
 		73C7F32C24E791D50095363E /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F32B24E791D50095363E /* RoundButton.swift */; };
+		73C7F33024E90B650095363E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7F32F24E90B650095363E /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		73C7F32724E6F67F0095363E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		73C7F32924E7862C0095363E /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		73C7F32B24E791D50095363E /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		73C7F32F24E90B650095363E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DE6B51BE4DB8BD5BA504471E /* Pods-Assignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.debug.xcconfig"; path = "Target Support Files/Pods-Assignment/Pods-Assignment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,20 +75,37 @@
 		73C7F30C24E69CBE0095363E /* Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				73C7F32E24E90B480095363E /* controllers */,
+				73C7F32D24E90B1B0095363E /* Helper */,
 				73C7F30D24E69CBE0095363E /* AppDelegate.swift */,
 				73C7F30F24E69CBE0095363E /* SceneDelegate.swift */,
 				73C7F31324E69CBE0095363E /* Main.storyboard */,
 				73C7F31624E69CC30095363E /* Assets.xcassets */,
 				73C7F31824E69CC30095363E /* LaunchScreen.storyboard */,
 				73C7F31B24E69CC30095363E /* Info.plist */,
-				73C7F32124E6A27B0095363E /* InitialViewController.swift */,
-				73C7F32324E6A2A90095363E /* SignupViewController.swift */,
-				73C7F32524E6F5FA0095363E /* AlartController.swift */,
-				73C7F32724E6F67F0095363E /* HomeViewController.swift */,
-				73C7F32924E7862C0095363E /* Validation.swift */,
-				73C7F32B24E791D50095363E /* RoundButton.swift */,
 			);
 			path = Assignment;
+			sourceTree = "<group>";
+		};
+		73C7F32D24E90B1B0095363E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				73C7F32B24E791D50095363E /* RoundButton.swift */,
+				73C7F32924E7862C0095363E /* Validation.swift */,
+				73C7F32524E6F5FA0095363E /* AlartController.swift */,
+				73C7F32F24E90B650095363E /* API.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		73C7F32E24E90B480095363E /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				73C7F32724E6F67F0095363E /* HomeViewController.swift */,
+				73C7F32324E6A2A90095363E /* SignupViewController.swift */,
+				73C7F32124E6A27B0095363E /* InitialViewController.swift */,
+			);
+			name = controllers;
 			sourceTree = "<group>";
 		};
 		AD3EF1D8DE5E307FC07D0276 /* Pods */ = {
@@ -228,6 +247,7 @@
 				73C7F32424E6A2A90095363E /* SignupViewController.swift in Sources */,
 				73C7F31024E69CBE0095363E /* SceneDelegate.swift in Sources */,
 				73C7F32824E6F67F0095363E /* HomeViewController.swift in Sources */,
+				73C7F33024E90B650095363E /* API.swift in Sources */,
 				73C7F32A24E7862C0095363E /* Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

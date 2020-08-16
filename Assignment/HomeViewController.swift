@@ -15,6 +15,8 @@ class HomeViewController: UIViewController, LoginButtonDelegate {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var loginBtn: RoundButton!
+    
     
     //MARK: viewdidload
     
@@ -22,6 +24,7 @@ class HomeViewController: UIViewController, LoginButtonDelegate {
     super.viewDidLoad()
         
     if let token = AccessToken.current,!token.isExpired {
+        self.loginBtn.isHidden = true
     let token = token.tokenString
     let request = FBSDKLoginKit.GraphRequest(graphPath: "me",
                                             parameters: ["fields": "email , name"] ,

@@ -107,12 +107,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sU-YJ-gYL" customClass="RoundButton" customModule="Assignment" customModuleProvider="target">
+                                <rect key="frame" x="103" y="512" width="209" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.29535446580000002" green="0.78039215689999997" blue="0.69403623209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="kap-aH-qWY"/>
                     </view>
                     <connections>
                         <outlet property="email" destination="WWW-wD-xp5" id="aRC-BW-8C7"/>
+                        <outlet property="loginBtn" destination="9sU-YJ-gYL" id="7TZ-cF-Ukp"/>
                         <outlet property="name" destination="1GG-lY-U5R" id="HO6-SS-kkM"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logout" modalPresentationStyle="fullScreen" id="ltV-N3-BsT"/>
                     </connections>
@@ -350,7 +364,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zAf-Oz-Spj"/>
         <segue reference="ltV-N3-BsT"/>
     </inferredMetricsTieBreakers>
 </document>
