@@ -62,13 +62,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7379A85C24E9188A00296108 /* Models */ = {
+		7379A85C24E9188A00296108 /* Alamofire Models */ = {
 			isa = PBXGroup;
 			children = (
 				7379A85D24E9189B00296108 /* LoginData.swift */,
 				7379A86124E9B73300296108 /* CountryCode.swift */,
 			);
-			name = Models;
+			name = "Alamofire Models";
 			sourceTree = "<group>";
 		};
 		73C7F30124E69CBE0095363E = {
@@ -92,7 +92,7 @@
 		73C7F30C24E69CBE0095363E /* Assignment */ = {
 			isa = PBXGroup;
 			children = (
-				7379A85C24E9188A00296108 /* Models */,
+				7379A85C24E9188A00296108 /* Alamofire Models */,
 				73C7F32E24E90B480095363E /* controllers */,
 				73C7F32D24E90B1B0095363E /* Helper */,
 				73C7F30D24E69CBE0095363E /* AppDelegate.swift */,
