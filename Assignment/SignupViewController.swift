@@ -24,8 +24,7 @@ class SignupViewController: UIViewController ,UITextFieldDelegate {
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var countryCode: RoundButton!
     
-    
-    
+    //MARK: viewdidload
     override func viewDidLoad() {
           super.viewDidLoad()
         getCodes()
@@ -44,11 +43,7 @@ class SignupViewController: UIViewController ,UITextFieldDelegate {
           self.address.delegate = self
           self.password.delegate = self
         
-          
       }
-    
-    
-    
     
     //MARK: dropdown for country codes
     let tableview = UITableView()
@@ -80,26 +75,17 @@ class SignupViewController: UIViewController ,UITextFieldDelegate {
         self.tableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y , width: frames.width, height: 0)
 
        }
-       
-    
-  
     
   //MARK: functions
-    
-    
-    
     @IBAction func countryCodeSelected(_ sender: Any) {
         addTransparentView(frames: countryCode.frame )
-        
     }
-    
 
     //MARK: get country codes
     func getCodes(){
         AF.request(API.baseURL + "code/list" , method: .get).responseJSON { response in
            // print(response)
              do{ let codes = try self.decoder.decode(codeModel.self , from: response.data! )
-                
                // print(codes)
                 self.Code = codes
                //print(self.Code)
@@ -108,11 +94,6 @@ class SignupViewController: UIViewController ,UITextFieldDelegate {
 
               }
     }
-    
-   
-    
-    
-    
     
     @IBAction func signupBtnClicked(_ sender: Any) {
         if( Validation.validate(text: first_name.text ?? "" ) == true && Validation.validate(text: last_name.text ?? ""  ) == true && Validation.validateEmail(enteredEmail: email.text ?? "") ==  true && Validation.validate(text: address.text ?? "" ) == true && phone.text?.count ?? 1 > 7 && password.text?.count ?? 1 > 5 && password.text == confirmPassword.text)
@@ -134,17 +115,12 @@ class SignupViewController: UIViewController ,UITextFieldDelegate {
             AlartController.showAlart(self, title: "Error !", message: "Signup form isn't filled correctly!")
         }
         
-        
-        
     }
     
     
     //MARK: Signup function
     
      func signup(textField1: UITextField ,textField2: UITextField ,textField3: UITextField ,textField4: UITextField ,textField5: UITextField ,textField6: UITextField ) -> Bool {
-             
-       
-        
               textField1.resignFirstResponder()
               textField2.resignFirstResponder()
               textField3.resignFirstResponder()
@@ -171,7 +147,6 @@ class SignupViewController: UIViewController ,UITextFieldDelegate {
             AF.request(API.baseURL + "user/signup" , method: .post, parameters: newUserParams).responseJSON {
                 response in
                // print(response.debugDescription)
-              
                 self.first_name.text = ""
                 self.last_name.text = ""
                 self.email.text = ""
@@ -205,9 +180,8 @@ extension SignupViewController: UITableViewDataSource, UITableViewDelegate {
         //print(self.selectedCode)
         removeTransparentView()
     }
-    
-    
 }
+
 class cell: UITableViewCell {
     
 }

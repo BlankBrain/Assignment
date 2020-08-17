@@ -20,12 +20,15 @@ struct User :Decodable {
 struct userModel :Decodable {
 
         let success: Bool
-        let data: [User]
+        let message: String?
+        let data: [User]?
     
     init( success: Bool?,
+          message: String,
           data: [User] = [])
      {
         self.success = success ?? false
+        self.message = ""
         self.data = data
      }
 

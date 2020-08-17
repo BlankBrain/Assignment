@@ -46,13 +46,17 @@ class InitialViewController: UIViewController, LoginButtonDelegate {
             
             if ( Validation.validateEmail(enteredEmail: self.emailTextfield.text ?? "") == true  && Validation.validatPassword(enteredPassword: passwordTextfield.text ?? "") == true  ) {
                 
+                
                 login()
                 
-            }else{
-                AlartController.showAlart(self, title: "Error", message: "Wrong Credentials!")
+            }else if ( Validation.validateEmail(enteredEmail: self.emailTextfield.text ?? "") == false  && Validation.validatPassword(enteredPassword: passwordTextfield.text ?? "") == true  ){
+                AlartController.showAlart(self, title: "Error", message: "Wrong email address!")
+
             }
             
-            
+            else{
+                AlartController.showAlart(self, title: "Error", message: "Incomplete Credentials!")
+            }
             
          }else{
             AlartController.showAlart(self, title: "Opps!", message: "No internet connection detected !")
@@ -60,14 +64,10 @@ class InitialViewController: UIViewController, LoginButtonDelegate {
         
     }
     
-    
-    
     //MARK: Fb button
   func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
     self.performSegue(withIdentifier: "loginToHome", sender: self)    }
-    
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
-    
     //MARK: login
     func login()
     {
@@ -82,13 +82,17 @@ class InitialViewController: UIViewController, LoginButtonDelegate {
             do {
                 let user = try self.decoder.decode(userModel.self , from: response.data! )
                // print(user)
-                if(user.success == true && user.data.first?.email != self.emailTextfield.text ){
+                if(user.success == true && user.data?.first?.email != self.emailTextfield.text ){
                     AlartController.showAlart(self, title: "Opps !", message: "Wrong Password !")
                 }
-                else if(user.success == true && user.data.first?.email == self.emailTextfield.text  ){
+                else if( user.message == "invalid email!" ){
+                    AlartController.showAlart(self, title: "Opps !", message: "Invalid email !")
+
+                }
+                else if(user.success == true && user.data?.first?.email == self.emailTextfield.text  ){
                     UserData.loginFromEmail = true
-                    UserData.name = ( (user.data.first?.first_name ?? "") + " " + (user.data.first?.last_name ?? "" ) )
-                    UserData.email = user.data.first?.email ?? ""
+                    UserData.name = ( (user.data?.first?.first_name ?? "") + " " + (user.data?.first?.last_name ?? "" ) )
+                    UserData.email = user.data?.first?.email ?? ""
                     self.performSegue(withIdentifier: "loginToHome", sender: self)
                 }else{
                     AlartController.showAlart(self, title: "Opps !", message: "Unexpected error !")
